@@ -14,9 +14,11 @@ namespace InteractableLimit
         public static int barrelLimit = -1;
         public static int goldShrineLimit = -1;
         public static int seedLimit = 3;
+        public static int orderLimit = -1;
 
         public void Awake()
         {
+            orderLimit = Config.Bind("General", "Shrine of Order", -1, "How many can spawn on the map. -1 for no limit.").Value;
             barrelLimit = Config.Bind("General", "Barrel", -1, "How many can spawn on the map. -1 for no limit.").Value;
             bloodLimit = Config.Bind("General", "Shrine of Blood", -1, "How many can spawn on the map. -1 for no limit.").Value;
             woodsLimit = Config.Bind("General", "Shrine of the Woods", -1, "How many can spawn on the map. -1 for no limit.").Value;
@@ -42,6 +44,10 @@ namespace InteractableLimit
             Addressables.LoadAssetAsync<InteractableSpawnCard>("RoR2/Base/ShrineHealing/iscShrineHealing.asset").WaitForCompletion().maxSpawnsPerStage = woodsLimit;
             Addressables.LoadAssetAsync<InteractableSpawnCard>("RoR2/Base/ShrineGoldshoresAccess/iscShrineGoldshoresAccess.asset").WaitForCompletion().maxSpawnsPerStage = goldShrineLimit;
             Addressables.LoadAssetAsync<InteractableSpawnCard>("RoR2/DLC1/VoidCamp/iscVoidCamp.asset").WaitForCompletion().maxSpawnsPerStage = seedLimit;
+
+            Addressables.LoadAssetAsync<InteractableSpawnCard>("RoR2/Base/ShrineRestack/iscShrineRestack.asset").WaitForCompletion().maxSpawnsPerStage = orderLimit;
+            Addressables.LoadAssetAsync<InteractableSpawnCard>("RoR2/Base/ShrineRestack/iscShrineRestackSnowy.asset").WaitForCompletion().maxSpawnsPerStage = orderLimit;
+            Addressables.LoadAssetAsync<InteractableSpawnCard>("RoR2/Base/ShrineRestack/iscShrineRestackSandy.asset").WaitForCompletion().maxSpawnsPerStage = orderLimit;
         }
     }
 }
