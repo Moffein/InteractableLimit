@@ -1,10 +1,19 @@
 ﻿using BepInEx;
 using RoR2;
+using System;
 using UnityEngine.AddressableAssets;
+
+namespace R2API.Utils
+{
+    [AttributeUsage(AttributeTargets.Assembly)]
+    public class ManualNetworkRegistrationAttribute : Attribute
+    {
+    }
+}
 
 namespace InteractableLimit
 {
-    [BepInPlugin("com.Moffein.InteractableLimit", "Interactable Limit", "1.0.0")]
+    [BepInPlugin("com.Moffein.InteractableLimit", "Interactable Limit", "1.0.1")]
     public class Class1 : BaseUnityPlugin
     {
         public static int bloodLimit = -1;
